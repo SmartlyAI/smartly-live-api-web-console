@@ -75,7 +75,7 @@ export default function SidePanel() {
   return (
     <div className={`side-panel ${open ? "open" : ""}`}>
       <header className="top">
-        <h2>Console</h2>
+        <img src="/assets/img/smartly-ai.png" alt="Smartly.ai" style={{ height: '30px' }} />
         {open ? (
           <button className="opener" onClick={() => setOpen(false)}>
             <RiSidebarFoldLine color="#b4b8bb" />
