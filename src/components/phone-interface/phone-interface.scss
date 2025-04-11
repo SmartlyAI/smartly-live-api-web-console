@@ -4,6 +4,7 @@
   align-items: center;
   min-height: 100vh;
   padding: 20px;
+  font-family: "Roboto", sans-serif;
 
   .phone-screen {
     position: relative;
@@ -38,13 +39,14 @@
         font-size: 18px;
         font-weight: 500;
         color: var(--Neutral-90);
+        font-family: "Roboto", sans-serif;
       }
 
       .call-timer {
         font-size: 16px;
         color: var(--Neutral-60);
         margin-top: 8px;
-        font-family: monospace;
+        font-family: "Roboto", sans-serif;
       }
     }
 

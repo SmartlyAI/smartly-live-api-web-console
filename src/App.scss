@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 :root {
   --text: black;
   --gray-200: #4b4744;
@@ -26,7 +28,7 @@
   scrollbar-color: var(--gray-600) var(--gray-900);
   scrollbar-width: thin;
 
-  --font-family: "Space Mono", monospace;
+  --font-family: "Roboto", sans-serif;
 
   /* */
   --Neutral-00: #fff;
@@ -53,7 +55,7 @@
 }
 
 body {
-  font-family: "Space Mono", monospace;
+  font-family: "Roboto", sans-serif;
   background: var(--Neutral-30);
 }
 
