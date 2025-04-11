@@ -45,7 +45,7 @@ export default function PhoneInterface() {
             alt="Robot" 
             className="robot-image"
           />
-          <div className="caller-id">Call Bot</div>
+          <div className="caller-id">ACME Bank</div>
           {connected && (
             <div className="call-timer">{formatTime(callDuration)}</div>
           )}
