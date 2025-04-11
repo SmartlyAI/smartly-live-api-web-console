@@ -27,7 +27,7 @@ if (typeof API_KEY !== "string") {
 }
 
 const host = "generativelanguage.googleapis.com";
-const uri = `wss://${host}/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent`;
+const uri = `wss://${host}/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent`;
 
 function App() {
   return (
