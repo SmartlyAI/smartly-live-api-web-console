@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: var(--Neutral-10);
   padding: 20px;
 
   .phone-screen {
@@ -95,16 +94,16 @@
   transition: all 0.3s ease;
   
   &.start-call {
-    background: var(--Green-500);
+    background: #25D366;  // WhatsApp green
     &:hover {
-      background: var(--Green-700);
+      background: #128C7E;  // Darker WhatsApp green
     }
   }
   
   &.end-call {
-    background: var(--Red-500);
+    background: #ff0000;  // Bright red
     &:hover {
-      background: var(--Red-700);
+      background: #cc0000;  // Darker red
     }
   }
 

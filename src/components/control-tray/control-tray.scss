@@ -13,18 +13,17 @@
   width: 48px;
   height: 48px;
   border-radius: 18px;
-  border: 1px solid rgba(0, 0, 0, 0);
+  border: none;
   user-select: none;
   cursor: pointer;
 
   &:focus {
-    border: 2px solid var(--Neutral-20);
-    outline: 2px solid var(--Neutral-80);
+    outline: none;
   }
 
   &.outlined {
     background: var(--Neutral-2);
-    border: 1px solid var(--Neutral-20);
+    border: none;
   }
 
   .no-action {
@@ -33,7 +32,7 @@
 
   &:hover {
     background: rgba(0, 0, 0, 0);
-    border: 1px solid var(--Neutral-20);
+    border: none;
   }
 
   &.connected {
@@ -41,7 +40,7 @@
     color: var(--Blue-500);
 
     &:hover {
-      border: 1px solid var(--Blue-500);
+      border: none;
     }
   }
 }
@@ -61,9 +60,9 @@
 
 .mic-button {
   position: relative;
-  background-color: var(--accent-red);
+  background-color: #ff0000;  // Bright red
   z-index: 1;
-  color: black;
+  color: white;  // Changed from black to white for better contrast
   transition: all 0.2s ease-in;
 
   &:focus {
@@ -72,7 +71,7 @@
   }
 
   &:hover {
-    background-color: var(--Red-400);
+    background-color: #cc0000;  // Darker red
   }
 
   &:before {
@@ -83,7 +82,7 @@
     display: block;
     content: "";
     opacity: 0.35;
-    background-color: var(--Red-500);
+    background-color: #ff0000;  // Bright red
     width: calc(100% + var(--volume) * 2);
     height: calc(100% + var(--volume) * 2);
     border-radius: 24px;
@@ -98,12 +97,12 @@
   }
 
   &:not(.connected) {
-    background-color: var(--Green-500);
+    background-color: #25D366;  // WhatsApp green
     color: white;
   }
 
   &.connected {
-    background-color: var(--Red-500);
+    background-color: #ff0000;  // Bright red
     color: white;
   }
 }
@@ -135,7 +134,7 @@
 
     .connection-button-container {
       border-radius: 27px;
-      border: 1px solid var(--Neutral-30);
+      border: none;
       background: var(--Neutral-5);
       padding: 10px;
     }
@@ -156,7 +155,7 @@
 
 .actions-nav {
   background: var(--Neutral-5);
-  border: 1px solid var(--Neutral-30);
+  border: none;
   border-radius: 27px;
   display: inline-flex;
   gap: 12px;

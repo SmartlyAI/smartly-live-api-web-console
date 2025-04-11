@@ -1,24 +1,24 @@
 :root {
-  --text: white;
-  --gray-200: #b4b8bb;
-  --gray-300: #80868b;
-  --gray-500: #5f6368;
-  --gray-600: #444444;
-  --gray-700: #202020;
-  --gray-800: #171717;
-  --gray-900: #111111;
-  --gray-1000: #0a0a0a;
-  --border-stroke: #444444;
-  --accent-blue: rgb(161, 228, 242);
-  --accent-blue-active-bg: #001233;
-  --accent-blue-active: #98beff;
-  --accent-blue-headers: #448dff;
-  --accent-green: rgb(168, 218, 181);
+  --text: black;
+  --gray-200: #4b4744;
+  --gray-300: #7f7974;
+  --gray-500: #a09c96;
+  --gray-600: #bbbbbb;
+  --gray-700: #dfdfdf;
+  --gray-800: #e8e8e8;
+  --gray-900: #eeeeee;
+  --gray-1000: #f5f5f5;
+  --border-stroke: #bbbbbb;
+  --accent-blue: rgb(94, 27, 13);
+  --accent-blue-active-bg: #ffedcc;
+  --accent-blue-active: #674100;
+  --accent-blue-headers: #bb7200;
+  --accent-green: rgb(87, 37, 74);
 
-  --midnight-blue: rgb(0, 18, 51);
-  --blue-30: #99beff;
+  --midnight-blue: rgb(255, 237, 204);
+  --blue-30: #664100;
 
-  --accent-red: #ff4600;
+  --accent-red: #00b9ff;
 
   --background: var(--gray-900);
   --color: var(--text);
@@ -29,27 +29,27 @@
   --font-family: "Space Mono", monospace;
 
   /* */
-  --Neutral-00: #000;
-  --Neutral-5: #181a1b;
-  --Neutral-10: #1c1f21;
-  --Neutral-15: #232729;
-  --Neutral-20: #2a2f31;
-  --Neutral-30: #404547;
-  --Neutral-50: #707577;
-  --Neutral-60: #888d8f;
-  --Neutral-80: #c3c6c7;
-  --Neutral-90: #e1e2e3;
+  --Neutral-00: #fff;
+  --Neutral-5: #e7e5e4;
+  --Neutral-10: #e3e0de;
+  --Neutral-15: #dcd8d6;
+  --Neutral-20: #d5d0ce;
+  --Neutral-30: #bfbab8;
+  --Neutral-50: #8f8a88;
+  --Neutral-60: #777270;
+  --Neutral-80: #3c3937;
+  --Neutral-90: #1e1d1c;
 
-  --Green-500: #0d9c53;
-  --Green-700: #025022;
+  --Green-500: #25D366;  // WhatsApp green
+  --Green-700: #128C7E;  // Darker WhatsApp green
 
-  --Blue-500: #1f94ff;
-  --Blue-800: #0f3557;
+  --Blue-500: #e06b00;
+  --Blue-800: #f0caa8;
 
-  --Red-400: #ff9c7a;
-  --Red-500: #ff4600;
-  --Red-600: #e03c00;
-  --Red-700: #bd3000;
+  --Red-400: #ff4444;    // Standard red
+  --Red-500: #ff0000;    // Bright red
+  --Red-600: #cc0000;    // Darker red
+  --Red-700: #990000;    // Even darker red
 }
 
 body {
