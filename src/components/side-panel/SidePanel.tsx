@@ -31,7 +31,7 @@ const filterOptions = [
 
 export default function SidePanel() {
   const { connected, client } = useLiveAPIContext();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const loggerRef = useRef<HTMLDivElement>(null);
   const loggerLastHeightRef = useRef<number>(-1);
   const { log, logs } = useLoggerStore();
@@ -75,7 +75,12 @@ export default function SidePanel() {
   return (
     <div className={`side-panel ${open ? "open" : ""}`}>
       <header className="top">
-        <img src="/assets/img/smartly-ai.png" alt="Smartly.ai" style={{ height: '30px' }} />
+        <img 
+          src="/assets/img/smartly-ai.png" 
+          alt="Smartly.ai" 
+          style={{ height: '30px' }} 
+          className={cn({ hidden: !open })}
+        />
         {open ? (
           <button className="opener" onClick={() => setOpen(false)}>
             <RiSidebarFoldLine color="#b4b8bb" />
