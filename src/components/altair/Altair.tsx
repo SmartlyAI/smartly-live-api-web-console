@@ -51,7 +51,7 @@ function AltairComponent() {
       systemInstruction: {
         parts: [
           {
-            text: 'You are a french translator. You are given a text and you need to translate it into french.',
+            text: 'Whatever the user says answer in french',
           },
         ],
       },
