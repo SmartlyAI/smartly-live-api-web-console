@@ -121,8 +121,8 @@ export default function SidePanel() {
         />
         <div className={cn("streaming-indicator", { connected })}>
           {connected
-            ? `🔵${open ? " Streaming" : ""}`
-            : `⏸️${open ? " Paused" : ""}`}
+            ? `📞${open ? " En appel" : ""}`
+            : `📱${open ? " Appel disponible" : ""}`}
         </div>
       </section>
       <div className="side-panel-container" ref={loggerRef}>

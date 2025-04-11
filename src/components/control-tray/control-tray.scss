@@ -98,8 +98,13 @@
   }
 
   &:not(.connected) {
-    background-color: var(--Blue-500);
-    color: var(--Neutral-5);
+    background-color: var(--Green-500);
+    color: white;
+  }
+
+  &.connected {
+    background-color: var(--Red-500);
+    color: white;
   }
 }
 
@@ -158,8 +163,12 @@
   align-items: center;
   overflow: clip;
   padding: 10px;
-
   transition: all 0.6s ease-in;
+
+  &.disabled {
+    border: none;
+    background: transparent;
+  }
 
   &>* {
     display: flex;

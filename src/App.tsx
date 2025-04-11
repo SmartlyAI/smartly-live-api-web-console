@@ -60,9 +60,7 @@ function App() {
               videoRef={videoRef}
               supportsVideo={true}
               onVideoStreamChange={setVideoStream}
-            >
-              {/* put your own buttons here */}
-            </ControlTray>
+            />
           </main>
         </div>
       </LiveAPIProvider>
