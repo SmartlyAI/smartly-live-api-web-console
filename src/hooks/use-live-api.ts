@@ -47,6 +47,13 @@ export function useLiveAPI({
   const [connected, setConnected] = useState(false);
   const [config, setConfig] = useState<LiveConfig>({
     model: "models/gemini-2.0-flash-live-001",
+    systemInstruction: {
+      parts: [
+        {
+          text: 'Whatever the user says answer in french',
+        },
+      ],
+    },
   });
   const [volume, setVolume] = useState(0);
 
