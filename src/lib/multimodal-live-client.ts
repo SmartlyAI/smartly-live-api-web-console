@@ -171,18 +171,18 @@ export class MultimodalLiveClient extends EventEmitter<MultimodalLiveClientEvent
       blob,
     )) as LiveIncomingMessage;
     if (isToolCallMessage(response)) {
-      this.log("server.toolCall", response);
+      this.log("server.toolCall", JSON.stringify(response, null, 2));
       this.emit("toolcall", response.toolCall);
       return;
     }
     if (isToolCallCancellationMessage(response)) {
-      this.log("receive.toolCallCancellation", response);
+      this.log("receive.toolCallCancellation", JSON.stringify(response, null, 2));
       this.emit("toolcallcancellation", response.toolCallCancellation);
       return;
     }
 
     if (isSetupCompleteMessage(response)) {
-      this.log("server.send", "setupComplete");
+      this.log("server.setupComplete", JSON.stringify(response, null, 2));
       this.emit("setupcomplete");
       return;
     }
@@ -192,12 +192,12 @@ export class MultimodalLiveClient extends EventEmitter<MultimodalLiveClientEvent
     if (isServerContentMessage(response)) {
       const { serverContent } = response;
       if (isInterrupted(serverContent)) {
-        this.log("receive.serverContent", "interrupted");
+        this.log("receive.interrupted", JSON.stringify(response, null, 2));
         this.emit("interrupted");
         return;
       }
       if (isTurnComplete(serverContent)) {
-        this.log("server.send", "turnComplete");
+        this.log("server.turnComplete", JSON.stringify(response, null, 2));
         this.emit("turncomplete");
         //plausible theres more to the message, continue
       }
@@ -213,7 +213,6 @@ export class MultimodalLiveClient extends EventEmitter<MultimodalLiveClientEvent
 
         // strip the audio parts out of the modelTurn
         const otherParts = difference(parts, audioParts);
-        // console.log("otherParts", otherParts);
 
         base64s.forEach((b64) => {
           if (b64) {
@@ -230,10 +229,10 @@ export class MultimodalLiveClient extends EventEmitter<MultimodalLiveClientEvent
 
         const content: ModelTurn = { modelTurn: { parts } };
         this.emit("content", content);
-        this.log(`server.content`, response);
+        this.log(`server.content`, JSON.stringify(response, null, 2));
       }
     } else {
-      console.log("received unmatched message", response);
+      this.log("server.unmatched", JSON.stringify(response, null, 2));
     }
   }
 
@@ -270,7 +269,7 @@ export class MultimodalLiveClient extends EventEmitter<MultimodalLiveClientEvent
       },
     };
     this._sendDirect(data);
-    this.log(`client.realtimeInput`, message);
+    this.log(`client.realtimeInput`, `Sending ${message} chunks (${chunks.length} total)`);
   }
 
   /**
@@ -282,7 +281,7 @@ export class MultimodalLiveClient extends EventEmitter<MultimodalLiveClientEvent
     };
 
     this._sendDirect(message);
-    this.log(`client.toolResponse`, message);
+    this.log(`client.toolResponse`, JSON.stringify(message, null, 2));
   }
 
   /**
@@ -303,7 +302,7 @@ export class MultimodalLiveClient extends EventEmitter<MultimodalLiveClientEvent
     };
 
     this._sendDirect(clientContentRequest);
-    this.log(`client.send`, clientContentRequest);
+    this.log(`client.send`, JSON.stringify(clientContentRequest, null, 2));
   }
 
   /**

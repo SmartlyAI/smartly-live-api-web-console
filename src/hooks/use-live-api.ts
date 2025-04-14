@@ -150,19 +150,17 @@ export function useLiveAPI({
       audioStreamerRef.current?.addPCM16(new Uint8Array(data));
 
     const onToolCall = (toolCall: ToolCall) => {
-      console.log('[Tool Call] Received:', toolCall);
+      console.log('[Tool Call] Full event:', JSON.stringify(toolCall, null, 2));
       toolCall.functionCalls.forEach(fc => {
-        console.log(`[Tool Call] Function: ${fc.name}`);
-        console.log(`[Tool Call] Arguments:`, fc.args);
+        console.log(`[Tool Call] Function details:`, JSON.stringify(fc, null, 2));
       });
     };
 
     const onContent = (content: ServerContent) => {
       if (isToolResponseMessage(content)) {
-        console.log('[Tool Response] Received:', content);
+        console.log('[Tool Response] Full event:', JSON.stringify(content, null, 2));
         content.toolResponse.functionResponses.forEach((fr: LiveFunctionResponse) => {
-          console.log(`[Tool Response] Function ID: ${fr.id}`);
-          console.log(`[Tool Response] Results:`, fr.response);
+          console.log(`[Tool Response] Function response:`, JSON.stringify(fr, null, 2));
         });
       } else if (isModelTurn(content)) {
         // Check if this is a spoken message (contains audio parts)
@@ -172,7 +170,9 @@ export function useLiveAPI({
         
         if (!hasAudioParts) {
           // This is a non-spoken message (like tool responses or system messages)
-          console.log('[Non-Spoken Message] Received:', content);
+          console.log('[Non-Spoken Message] Full event:', JSON.stringify(content, null, 2));
+        } else {
+          console.log('[Spoken Message] Full event:', JSON.stringify(content, null, 2));
         }
       }
     };
