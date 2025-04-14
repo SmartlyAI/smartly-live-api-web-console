@@ -48,6 +48,7 @@ export type ThinkingConfig = {
 
 export type LiveGenerationConfig = GenerationConfig & {
   responseModalities: "text" | "audio" | "image";
+  seed?: number;
   speechConfig?: {
     voiceConfig?: {
       prebuiltVoiceConfig?: {

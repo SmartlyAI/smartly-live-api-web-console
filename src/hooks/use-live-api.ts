@@ -98,6 +98,7 @@ export function useLiveAPI({
     model: "models/gemini-2.0-flash-live-001",
     generationConfig: {
       temperature: 0.1,
+      seed: 42,
       speechConfig: {
         voiceConfig: {
           prebuiltVoiceConfig: {
