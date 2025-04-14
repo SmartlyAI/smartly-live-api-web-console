@@ -6,7 +6,7 @@ import { useLiveAPIContext } from "../../contexts/LiveAPIContext";
 import { ToolCall } from "../../multimodal-live-types";
 import { handleDatabaseSearch } from "../../lib/tools/database-search";
 
-function DatabaseSearchComponent() {
+function DatabaseSearchComponent({ smartlyApiKey }: { smartlyApiKey: string }) {
   const { client } = useLiveAPIContext();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function DatabaseSearchComponent() {
 
       if (databaseSearchCall) {
         const query = (databaseSearchCall.args as any).query;
-        const response = await handleDatabaseSearch(query);
+        const response = await handleDatabaseSearch(query, smartlyApiKey);
         
         // Send the response back to the LLM
         client.sendToolResponse({

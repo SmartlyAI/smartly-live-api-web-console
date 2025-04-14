@@ -23,6 +23,7 @@ import cn from "classnames";
 import DatabaseSearch from "./components/database-search/DatabaseSearch";
 
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY as string;
+const SMARTLY_API_KEY = process.env.SMARTLY_API_KEY as string;
 if (typeof API_KEY !== "string") {
   throw new Error("set REACT_APP_GEMINI_API_KEY in .env");
 }
@@ -33,12 +34,12 @@ const uri = `wss://${host}/ws/google.ai.generativelanguage.v1beta.GenerativeServ
 function App() {
   return (
     <div className="App">
-      <LiveAPIProvider url={uri} apiKey={API_KEY}>
+      <LiveAPIProvider url={uri} apiKey={API_KEY} smartlyApiKey={SMARTLY_API_KEY}>
         <div className="streaming-console">
           <SidePanel />
           <main>
             <PhoneInterface />
-            <DatabaseSearch />
+            <DatabaseSearch smartlyApiKey={SMARTLY_API_KEY}/>
           </main>
         </div>
       </LiveAPIProvider>
