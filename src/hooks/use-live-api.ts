@@ -19,10 +19,11 @@ import {
   MultimodalLiveAPIClientConnection,
   MultimodalLiveClient,
 } from "../lib/multimodal-live-client";
-import { LiveConfig } from "../multimodal-live-types";
+import { LiveConfig, ToolCall, ServerContent, LiveFunctionResponse, isToolResponseMessage } from "../multimodal-live-types";
 import { AudioStreamer } from "../lib/audio-streamer";
 import { audioContext } from "../lib/utils";
 import VolMeterWorket from "../lib/worklets/vol-meter";
+import { databaseSearchTool } from "../lib/tools/database-search";
 
 export type UseLiveAPIResults = {
   client: MultimodalLiveClient;
@@ -72,7 +73,7 @@ export function useLiveAPI({
   - Be concise, respectful, and customer-oriented.
   
   Use of Search Tool:
-  - Always consult the search tool BEFORE answering any banking-related question.
+  - Always consult the search tool named "databaseSearch" BEFORE answering any banking-related question.
   - Analyze search results carefully to ensure accuracy.
   - Ask the user for more details if information is insufficient.
   - Suggest transfer to a human agent only if necessary, and only after the user agrees.
@@ -105,6 +106,7 @@ export function useLiveAPI({
         },
       ],
     },
+    tools: [{ functionDeclarations: [databaseSearchTool] }]
   });
   const [volume, setVolume] = useState(0);
 
@@ -134,16 +136,38 @@ export function useLiveAPI({
     const onAudio = (data: ArrayBuffer) =>
       audioStreamerRef.current?.addPCM16(new Uint8Array(data));
 
+    const onToolCall = (toolCall: ToolCall) => {
+      console.log('[Tool Call] Received:', toolCall);
+      toolCall.functionCalls.forEach(fc => {
+        console.log(`[Tool Call] Function: ${fc.name}`);
+        console.log(`[Tool Call] Arguments:`, fc.args);
+      });
+    };
+
+    const onContent = (content: ServerContent) => {
+      if (isToolResponseMessage(content)) {
+        console.log('[Tool Response] Received:', content);
+        content.toolResponse.functionResponses.forEach((fr: LiveFunctionResponse) => {
+          console.log(`[Tool Response] Function ID: ${fr.id}`);
+          console.log(`[Tool Response] Results:`, fr.response);
+        });
+      }
+    };
+
     client
       .on("close", onClose)
       .on("interrupted", stopAudioStreamer)
-      .on("audio", onAudio);
+      .on("audio", onAudio)
+      .on("toolcall", onToolCall)
+      .on("content", onContent);
 
     return () => {
       client
         .off("close", onClose)
         .off("interrupted", stopAudioStreamer)
-        .off("audio", onAudio);
+        .off("audio", onAudio)
+        .off("toolcall", onToolCall)
+        .off("content", onContent);
     };
   }, [client]);
 

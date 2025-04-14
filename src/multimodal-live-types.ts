@@ -22,6 +22,7 @@ import type {
   Part,
   Tool,
 } from "@google/generative-ai";
+import { databaseSearchTool } from "./lib/tools/database-search";
 
 /**
  * this module contains type-definitions and Type-Guards
@@ -38,7 +39,7 @@ export type LiveConfig = {
   model: string;
   systemInstruction?: { parts: Part[] };
   generationConfig?: Partial<LiveGenerationConfig>;
-  tools?: Array<Tool | { googleSearch: {} } | { codeExecution: {} }>;
+  tools?: Array<Tool>;
 };
 
 export type LiveGenerationConfig = GenerationConfig & {

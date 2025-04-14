@@ -57,7 +57,6 @@ function AltairComponent() {
       },
       tools: [
         // there is a free-tier quota for search
-        { googleSearch: {} },
         { functionDeclarations: [declaration] },
       ],
     });

@@ -20,6 +20,7 @@ import { LiveAPIProvider } from "./contexts/LiveAPIContext";
 import SidePanel from "./components/side-panel/SidePanel";
 import PhoneInterface from "./components/phone-interface/PhoneInterface";
 import cn from "classnames";
+import DatabaseSearch from "./components/database-search/DatabaseSearch";
 
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY as string;
 if (typeof API_KEY !== "string") {
@@ -37,6 +38,7 @@ function App() {
           <SidePanel />
           <main>
             <PhoneInterface />
+            <DatabaseSearch />
           </main>
         </div>
       </LiveAPIProvider>
