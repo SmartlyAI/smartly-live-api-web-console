@@ -42,15 +42,21 @@ export type LiveConfig = {
   tools?: Array<Tool>;
 };
 
+export type ThinkingConfig = {
+  thinkingBudget?: number;
+};
+
 export type LiveGenerationConfig = GenerationConfig & {
   responseModalities: "text" | "audio" | "image";
   speechConfig?: {
     voiceConfig?: {
       prebuiltVoiceConfig?: {
-        voiceName: "Puck" | "Charon" | "Kore" | "Fenrir" | "Aoede" | string;
+        voiceName: string;
       };
     };
+    languageCode?: string;
   };
+  thinkingConfig?: ThinkingConfig;
 };
 
 export type LiveOutgoingMessage =

@@ -96,6 +96,20 @@ export function useLiveAPI({
   const [connected, setConnected] = useState(false);
   const [config, setConfig] = useState<LiveConfig>({
     model: "models/gemini-2.0-flash-live-001",
+    generationConfig: {
+      temperature: 0.1,
+      speechConfig: {
+        voiceConfig: {
+          prebuiltVoiceConfig: {
+            voiceName: "Aoede" // Options: "Puck" | "Charon" | "Kore" | "Fenrir" | "Aoede"
+          }
+        },
+        languageCode: "fr-FR"
+      },
+      /*thinkingConfig: {
+        thinkingBudget: 1000 // Set a reasonable budget for thinking tokens
+      }*/
+    },
     systemInstruction: {
       parts: [
         {
