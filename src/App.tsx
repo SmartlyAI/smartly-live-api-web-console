@@ -23,7 +23,7 @@ import cn from "classnames";
 import DatabaseSearch from "./components/database-search/DatabaseSearch";
 
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY as string;
-const SMARTLY_API_KEY = process.env.SMARTLY_API_KEY as string;
+const SMARTLY_API_KEY = process.env.REACT_APP_SMARTLY_API_KEY as string;
 if (typeof API_KEY !== "string") {
   throw new Error("set REACT_APP_GEMINI_API_KEY in .env");
 }
