@@ -21,6 +21,7 @@ import Select from "react-select";
 import { useLiveAPIContext } from "../../contexts/LiveAPIContext";
 import { useLoggerStore } from "../../lib/store-logger";
 import Logger, { LoggerFilterType } from "../logger/Logger";
+import BotSettings from './BotSettings';
 import "./side-panel.scss";
 
 const filterOptions = [
@@ -73,6 +74,7 @@ export default function SidePanel() {
       <div className="side-panel-container" ref={loggerRef}>
         <Logger filter="none" />
       </div>
+      {open && <BotSettings />}
     </div>
   );
 }

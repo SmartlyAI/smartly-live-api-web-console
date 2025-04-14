@@ -1,0 +1,48 @@
+.bot-settings {
+  padding: 20px;
+  background: var(--Neutral-10);
+  border-bottom: 1px solid var(--Neutral-20);
+  color: var(--Neutral-90);
+
+  h3 {
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .setting-group {
+    margin-bottom: 15px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: var(--Neutral-70);
+    }
+
+    .react-select {
+      background: var(--Neutral-20);
+      color: var(--Neutral-90);
+      width: 100%;
+      height: 30px;
+      font-family: "Roboto", sans-serif;
+
+      .react-select__single-value {
+        color: var(--Neutral-90);
+        font-family: "Roboto", sans-serif;
+      }
+
+      .react-select__menu {
+        background: var(--Neutral-20);
+        color: var(--Neutral-90);
+        font-family: "Roboto", sans-serif;
+      }
+
+      .react-select__option {
+        &:hover {
+          background: var(--Neutral-30);
+        }
+      }
+    }
+  }
+} 
