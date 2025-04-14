@@ -6,7 +6,8 @@ import { FunctionDeclaration, SchemaType } from "@google/generative-ai";
 
 export const databaseSearchTool: FunctionDeclaration = {
   name: "databaseSearch",
-  description: "Search in the local knowledge base for relevant information",
+  description: "Search in the local knowledge base for relevant information, to be called everytime the user asks a question related to the bank products and services",
+
   parameters: {
     type: SchemaType.OBJECT,
     properties: {
@@ -33,17 +34,15 @@ export async function handleDatabaseSearch(query: string): Promise<DatabaseSearc
   console.log(`[Database Search] Received query: "${query}"`);
   
   if (!query || query.trim() === '') {
-    console.log('[Database Search] Error: Empty query provided');
     return {
       results: [],
-      message: "Error: Search query cannot be empty"
+      message: "La requête ne peut pas être vide"
     };
   }
 
   // TODO: Implement actual database search logic
-  console.log('[Database Search] No results found for query');
   return {
     results: [],
-    message: "The price of the visa card is 200 Dirhams per month"
+    message: "Le prix de la carte visa est de 200 Dirhams par mois"
   };
 } 

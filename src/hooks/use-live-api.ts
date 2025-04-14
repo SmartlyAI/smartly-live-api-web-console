@@ -19,7 +19,7 @@ import {
   MultimodalLiveAPIClientConnection,
   MultimodalLiveClient,
 } from "../lib/multimodal-live-client";
-import { LiveConfig, ToolCall, ServerContent, LiveFunctionResponse, isToolResponseMessage } from "../multimodal-live-types";
+import { LiveConfig, ToolCall, ServerContent, LiveFunctionResponse, isToolResponseMessage, isModelTurn } from "../multimodal-live-types";
 import { AudioStreamer } from "../lib/audio-streamer";
 import { audioContext } from "../lib/utils";
 import VolMeterWorket from "../lib/worklets/vol-meter";
@@ -73,10 +73,11 @@ export function useLiveAPI({
   - Be concise, respectful, and customer-oriented.
   
   Use of Search Tool:
-  - Always consult the search tool named "databaseSearch" BEFORE answering any banking-related question.
-  - Analyze search results carefully to ensure accuracy.
-  - Ask the user for more details if information is insufficient.
-  - Suggest transfer to a human agent only if necessary, and only after the user agrees.
+  - Always consult the knowledge base search tool BEFORE answering any banking-related question.
+  - Once the tool response of the tool is available, analyze search results carefully answering.
+  - Base your response in the search results only, if you don't know, say you don't have the info
+  - If user asked in one language, answer in the same language dont change.
+  - Ask the user for more details if we dont have the info, maybe a more accurate question will lead to better results.
   
   Knowledge Limits:
   - Restrict your answers strictly to ACME Bank's products, services, and processes.
@@ -89,11 +90,7 @@ export function useLiveAPI({
   - After each answer, ask if the user has any further questions.
   - End the conversation only after explicit confirmation from the user.
   
-  Tools Usage Policy:
-  - Search Tool: Mandatory before any banking response.
-  - Termination Tool: Only after user confirms end of conversation.
-  - Transfer Tool: Only after user agrees to be transferred.
-  - No Tools: For greetings or off-topic questions.
+
   `;
   
   const [connected, setConnected] = useState(false);
@@ -151,6 +148,16 @@ export function useLiveAPI({
           console.log(`[Tool Response] Function ID: ${fr.id}`);
           console.log(`[Tool Response] Results:`, fr.response);
         });
+      } else if (isModelTurn(content)) {
+        // Check if this is a spoken message (contains audio parts)
+        const hasAudioParts = content.modelTurn.parts.some(
+          (p) => p.inlineData && p.inlineData.mimeType.startsWith("audio/pcm")
+        );
+        
+        if (!hasAudioParts) {
+          // This is a non-spoken message (like tool responses or system messages)
+          console.log('[Non-Spoken Message] Received:', content);
+        }
       }
     };
 
