@@ -34,7 +34,7 @@ const uri = `wss://${host}/ws/google.ai.generativelanguage.v1beta.GenerativeServ
 function App() {
   return (
     <div className="App">
-      <LiveAPIProvider url={uri} apiKey={API_KEY} smartlyApiKey={SMARTLY_API_KEY}>
+      <LiveAPIProvider url={uri} apiKey={API_KEY}>
         <div className="streaming-console">
           <SidePanel />
           <main>
