@@ -43,6 +43,6 @@ export async function handleDatabaseSearch(query: string): Promise<DatabaseSearc
   // TODO: Implement actual database search logic
   return {
     results: [],
-    message: "Le prix de la carte visa est de 200 Dirhams par mois"
+    message: "Le prix de la carte visa est de 200 Dirham par mois"
   };
 } 
